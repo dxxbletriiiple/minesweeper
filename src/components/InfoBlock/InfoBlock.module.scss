@@ -1,0 +1,41 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+.info-block {
+	width: 650px;
+	height: 90px;
+	margin: 0 auto;
+	padding: 10px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@include info-block;
+}
+
+.minutes,
+.seconds {
+	display: flex;
+	div {
+		width: 32px;
+		height: 56px;
+		background-repeat: no-repeat;
+		background-size: 320px 200px;
+		@include bg;
+		background-position: top right;
+	}
+}
+
+.minutes {
+	div:nth-of-type(2) {
+		@include bg;
+		background-position: -95px 0px;
+	}
+}
+
+.face {
+	width: 65px;
+	height: 65px;
+	@include bg;
+	background-repeat: no-repeat;
+	background-size: 350px 210px;
+	background-position: -2px -62px;
+}
