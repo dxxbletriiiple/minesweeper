@@ -1,0 +1,57 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.grid-element {
+	outline: 1px solid #7b7b7b;
+	&.bomb {
+		@include bg;
+		@include bomb;
+	}
+	&.valid {
+		&[data='1'] {
+			@include bg;
+			@include number;
+			@include one;
+		}
+		&[data='2'] {
+			@include bg;
+			@include number;
+			@include two;
+		}
+		&[data='3'] {
+			@include bg;
+			@include number;
+			@include three;
+		}
+		&[data='4'] {
+			@include bg;
+			@include number;
+			@include four;
+		}
+		&[data='5'] {
+			@include bg;
+			@include number;
+			@include five;
+		}
+		&[data='6'] {
+			@include bg;
+			@include number;
+			@include six;
+		}
+		&[data='7'] {
+			@include bg;
+			@include number;
+			@include seven;
+		}
+		&[data='8'] {
+			@include bg;
+			@include number;
+			@include eight;
+		}
+	}
+	&:not([data='0'], .checked) {
+		&.flag {
+			@include flag;
+		}
+	}
+}
