@@ -1,0 +1,56 @@
+@import './variables';
+@mixin container {
+	border: var(--border-white);
+	border-right: var(--border-grey);
+	border-bottom: var(--border-grey);
+}
+
+@mixin info-block {
+	border: var(--border-grey);
+	border-right: var(--border-white);
+	border-bottom: var(--border-white);
+}
+
+@mixin bg {
+	background-image: url('../../src/assets/sprites.png');
+}
+@mixin bomb {
+	background-size: 324px 208px;
+	background-position: 126px -127px;
+}
+@mixin number {
+	background-size: 340px 209px;
+}
+@mixin one {
+	background-position: 0px -169px;
+}
+@mixin two {
+	background-position: -42px -169px;
+}
+@mixin three {
+	background-position: -84px -169px;
+}
+@mixin four {
+	background-position: -126px -169px;
+}
+@mixin five {
+	background-position: -168px -169px;
+}
+@mixin six {
+	background-position: -210px -169px;
+}
+@mixin seven {
+	background-position: -252px -169px;
+}
+@mixin eight {
+	background-position: -294px -169px;
+}
+
+@mixin notChacked {
+	@include number;
+	background-position: 0px -126px;
+}
+@mixin flag {
+	@include number;
+	background-position: -84px -126px !important;
+}

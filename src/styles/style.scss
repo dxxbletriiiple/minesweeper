@@ -1,0 +1,133 @@
+@import './mixins';
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--main: #c0c0c0;
+	--border-white: 5px solid #fff;
+	--border-grey: 5px solid #7b7b7b;
+}
+body {
+	background: #1d1d1d;
+}
+
+.container {
+	width: 695px;
+	height: 800px;
+	margin: 50px auto;
+	padding: 16px;
+	background: var(--main);
+	@include container;
+}
+
+.info-block {
+	width: 650px;
+	height: 90px;
+	margin: 0 auto;
+	padding: 10px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@include info-block;
+}
+
+.grid {
+	width: 650px;
+	height: 650px;
+	margin: 16px auto 0;
+	@include info-block;
+}
+
+.minutes,
+.seconds {
+	display: flex;
+	div {
+		width: 32px;
+		height: 56px;
+		background-repeat: no-repeat;
+		background-size: 320px 200px;
+		@include bg;
+		background-position: top right;
+	}
+}
+
+.minutes {
+	div:nth-of-type(2) {
+		@include bg;
+		background-position: -95px 0px;
+	}
+}
+
+.face {
+	width: 65px;
+	height: 65px;
+	@include bg;
+	background-repeat: no-repeat;
+	background-size: 350px 210px;
+	background-position: -2px -62px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(16, 1fr);
+	grid-template-rows: repeat(16, 1fr);
+	div {
+		outline: 1px solid #7b7b7b;
+		&.bomb {
+			@include bg;
+			@include bomb;
+		}
+		&.valid {
+			&[data='1'] {
+				@include bg;
+				@include number;
+				@include one;
+			}
+			&[data='2'] {
+				@include bg;
+				@include number;
+				@include two;
+			}
+			&[data='3'] {
+				@include bg;
+				@include number;
+				@include three;
+			}
+			&[data='4'] {
+				@include bg;
+				@include number;
+				@include four;
+			}
+			&[data='5'] {
+				@include bg;
+				@include number;
+				@include five;
+			}
+			&[data='6'] {
+				@include bg;
+				@include number;
+				@include six;
+			}
+			&[data='7'] {
+				@include bg;
+				@include number;
+				@include seven;
+			}
+			&[data='8'] {
+				@include bg;
+				@include number;
+				@include eight;
+			}
+		}
+		&:not([data='0'], .checked) {
+			&.flag {
+				@include flag;
+			}
+		}
+	}
+}
