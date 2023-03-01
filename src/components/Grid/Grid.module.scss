@@ -1,0 +1,15 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.grid {
+	width: 680px;
+	height: 680px;
+	margin: 16px auto 0;
+	@include info-block;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(16, 1fr);
+	grid-template-rows: repeat(16, 1fr);
+}
