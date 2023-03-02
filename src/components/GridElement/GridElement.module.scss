@@ -7,51 +7,68 @@
 		@include bg;
 		@include bomb;
 	}
-	&.valid {
-		&[data='1'] {
-			@include bg;
-			@include number;
-			@include one;
-		}
-		&[data='2'] {
-			@include bg;
-			@include number;
-			@include two;
-		}
-		&[data='3'] {
-			@include bg;
-			@include number;
-			@include three;
-		}
-		&[data='4'] {
-			@include bg;
-			@include number;
-			@include four;
-		}
-		&[data='5'] {
-			@include bg;
-			@include number;
-			@include five;
-		}
-		&[data='6'] {
-			@include bg;
-			@include number;
-			@include six;
-		}
-		&[data='7'] {
-			@include bg;
-			@include number;
-			@include seven;
-		}
-		&[data='8'] {
-			@include bg;
-			@include number;
-			@include eight;
+	&.checked {
+		&.valid {
+			&[datatype='1'] {
+				@include bg;
+				@include number;
+				@include one;
+			}
+			&[datatype='2'] {
+				@include bg;
+				@include number;
+				@include two;
+			}
+			&[datatype='3'] {
+				@include bg;
+				@include number;
+				@include three;
+			}
+			&[datatype='4'] {
+				@include bg;
+				@include number;
+				@include four;
+			}
+			&[datatype='5'] {
+				@include bg;
+				@include number;
+				@include five;
+			}
+			&[datatype='6'] {
+				@include bg;
+				@include number;
+				@include six;
+			}
+			&[datatype='7'] {
+				@include bg;
+				@include number;
+				@include seven;
+			}
+			&[datatype='8'] {
+				@include bg;
+				@include number;
+				@include eight;
+			}
 		}
 	}
-	&:not([data='0'], .checked) {
+	&.flag {
+		@include bg;
+		@include bomb;
+		background-position: 247px -127px;
+	}
+	&.question {
+		@include bg;
+		@include bomb;
+		background-position: 208px -127px;
+	}
+	&:not(.checked) {
+		@include bg;
+		@include bomb;
+		background-position: 2px -127px;
+	}
+	/* &:not([datatype='0'], .checked) {
 		&.flag {
 			@include flag;
 		}
-	}
+	} */
 }
