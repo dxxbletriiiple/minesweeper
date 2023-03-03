@@ -24,22 +24,9 @@
 	}
 }
 
+.seconds,
 .flags {
-	div:nth-of-type(2) {
-		&[datatype='4'] {
-			background-position: -105px 0px;
-		}
-		&[datatype='3'] {
-			background-position: -70px 0px;
-		}
-		&[datatype='2'] {
-			background-position: -35px 0px;
-		}
-		&[datatype='1'] {
-			background-position: 0px 0px;
-		}
-	}
-	div:nth-of-type(3) {
+	div {
 		&[datatype='9'] {
 			background-position: -280px 0px;
 		}
