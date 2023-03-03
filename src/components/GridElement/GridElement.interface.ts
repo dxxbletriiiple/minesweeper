@@ -4,6 +4,6 @@ export interface IGridElementProps {
 	count: string;
 	checked: boolean;
 	flag: string;
-	onClick(id: string): void;
-	onContextMenu(e: React.MouseEvent, id: string): void;
+	/* onClick(id: string): void;
+	onContextMenu(e: React.MouseEvent, id: string): void; */
 }

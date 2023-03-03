@@ -3,13 +3,20 @@ import grid from '../../utils';
 
 const initialState = {
 	grid,
+	isStarted: false,
+	face: '',
 };
 
 const counterSlice = createSlice({
 	name: 'onClick',
 	initialState,
 	reducers: {
-		onClick: (state, action: PayloadAction<string>) => {
+		onClickStart: (state) => {
+			state.face = 'scared';
+		},
+		onClickEnd: (state, action: PayloadAction<string>) => {
+			state.isStarted = true;
+			state.face = '';
 			state.grid = state.grid.map((el) => {
 				if (el.id == action.payload) return { ...el, checked: true };
 				return el;
@@ -25,8 +32,11 @@ const counterSlice = createSlice({
 				return el;
 			});
 		},
+		onRestart: (state, action: PayloadAction<string>) => {
+			state.face = '';
+		},
 	},
 });
 
-export const { onClick, onContextMenu } = counterSlice.actions;
+export const { onClickStart, onClickEnd, onContextMenu } = counterSlice.actions;
 export default counterSlice.reducer;
