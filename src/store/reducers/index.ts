@@ -10,7 +10,6 @@ const counterSlice = createSlice({
 	initialState,
 	reducers: {
 		onClick: (state, action: PayloadAction<string>) => {
-			console.log('qq');
 			state.grid = state.grid.map((el) => {
 				if (el.id == action.payload) return { ...el, checked: true };
 				return el;

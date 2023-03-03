@@ -1,24 +1,32 @@
-import { useState } from 'react';
-import { v4 } from 'uuid';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import { Container } from './components/Container/Container';
+import { InfoBlock } from './components/InfoBlock/InfoBlock';
 import { Grid } from './components/Grid/Grid';
 import { GridElement } from './components/GridElement/GridElement';
-import { InfoBlock } from './components/InfoBlock/InfoBlock';
-import squares from './utils';
-import './App.scss';
 import { IGridElementProps } from './components/GridElement/GridElement.interface';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { store, RootState } from './store/store';
+import { onClick } from './store/reducers';
+import './App.scss';
 
 function App() {
+	const grid = useSelector((state: RootState) => state.grid.grid);
+	const dispatch = useDispatch();
+
+	const handleClick = (id: string) => {
+		dispatch(onClick(id));
+	};
+	const onContextMenu = (id: string) => {};
+
 	return (
 		<div className="App">
-			<Provider store={store}>
-				<Container>
-					<InfoBlock />
-					<Grid />
-				</Container>
-			</Provider>
+			<Container>
+				<InfoBlock />
+				<Grid>
+					{grid.map((el: IGridElementProps) => (
+						<GridElement {...el} key={el.id} onClick={handleClick} />
+					))}
+				</Grid>
+			</Container>
 		</div>
 	);
 }
