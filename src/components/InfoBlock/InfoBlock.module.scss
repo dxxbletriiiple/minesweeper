@@ -11,23 +11,62 @@
 	@include info-block;
 }
 
-.minutes,
+.flags,
 .seconds {
 	display: flex;
 	div {
-		width: 32px;
-		height: 56px;
-		background-repeat: no-repeat;
-		background-size: 320px 200px;
 		@include bg;
-		background-position: 0px 0px;
+		width: 30px;
+		height: 55px;
+		background-repeat: no-repeat;
+		background-size: 347px 210px;
+		background-position: -315px 0px;
 	}
 }
 
-.minutes {
+.flags {
 	div:nth-of-type(2) {
-		@include bg;
-		background-position: -95px 0px;
+		&[datatype='4'] {
+			background-position: -105px 0px;
+		}
+		&[datatype='3'] {
+			background-position: -70px 0px;
+		}
+		&[datatype='2'] {
+			background-position: -35px 0px;
+		}
+		&[datatype='1'] {
+			background-position: 0px 0px;
+		}
+	}
+	div:nth-of-type(3) {
+		&[datatype='9'] {
+			background-position: -280px 0px;
+		}
+		&[datatype='8'] {
+			background-position: -245px 0px;
+		}
+		&[datatype='7'] {
+			background-position: -210px 0px;
+		}
+		&[datatype='6'] {
+			background-position: -175px 0px;
+		}
+		&[datatype='5'] {
+			background-position: -140px 0px;
+		}
+		&[datatype='4'] {
+			background-position: -105px 0px;
+		}
+		&[datatype='3'] {
+			background-position: -70px 0px;
+		}
+		&[datatype='2'] {
+			background-position: -35px 0px;
+		}
+		&[datatype='1'] {
+			background-position: 0px 0px;
+		}
 	}
 }
 

@@ -15,7 +15,6 @@ export const GridElement = ({ id, clazz, count, checked, flag }: IGridElementPro
 		e.preventDefault();
 		dispatch(onContextMenu(id));
 	};
-
 	return (
 		<div
 			className={cn(styles['grid-element'], styles[clazz], {
@@ -25,7 +24,7 @@ export const GridElement = ({ id, clazz, count, checked, flag }: IGridElementPro
 			})}
 			datatype={count}
 			onClick={() => handleClick(id)}
-			onMouseDown={() => dispatch(onClickStart())}
+			// onMouseDown={() => dispatch(onClickStart())}
 			onContextMenu={(e: React.MouseEvent) => handleContextMenu(e, id)}
 		></div>
 	);
