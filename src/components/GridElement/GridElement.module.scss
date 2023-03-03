@@ -3,12 +3,12 @@
 
 .grid-element {
 	outline: 1px solid #7b7b7b;
-	&.bomb {
-		@include bg;
-		@include bomb;
-	}
-	&.checked {
-		&.valid {
+	@include bg;
+	@include bomb;
+	background-position: 2px -127px;
+	&.valid {
+		&.checked {
+			background-position: -40px -127px;
 			&[datatype='1'] {
 				@include bg;
 				@include number;
@@ -61,14 +61,10 @@
 		@include bomb;
 		background-position: 208px -127px;
 	}
-	&:not(.checked) {
-		@include bg;
-		@include bomb;
-		background-position: 2px -127px;
-	}
-	/* &:not([datatype='0'], .checked) {
-		&.flag {
-			@include flag;
+	&.bomb {
+		&.checked {
+			@include bg;
+			@include bomb;
 		}
-	} */
+	}
 }

@@ -1,21 +1,24 @@
-import './App.scss';
+import { useState } from 'react';
+import { v4 } from 'uuid';
 import { Container } from './components/Container/Container';
 import { Grid } from './components/Grid/Grid';
-import { GridElement } from './components/GridElement/GreidElement';
+import { GridElement } from './components/GridElement/GridElement';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
+import squares from './utils';
+import './App.scss';
+import { IGridElementProps } from './components/GridElement/GridElement.interface';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
-	const arr = Array(256).fill('1');
 	return (
 		<div className="App">
-			<Container>
-				<InfoBlock />
-				<Grid>
-					{arr.map((_) => (
-						<GridElement />
-					))}
-				</Grid>
-			</Container>
+			<Provider store={store}>
+				<Container>
+					<InfoBlock />
+					<Grid />
+				</Container>
+			</Provider>
 		</div>
 	);
 }

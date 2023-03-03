@@ -13,10 +13,11 @@
 
 @mixin bg {
 	background-image: url('../../src/assets/sprites.png');
+	background-repeat: no-repeat;
 }
 @mixin bomb {
 	background-size: 324px 208px;
-	background-position: 126px -127px;
+	background-position: -198px -127px;
 }
 @mixin number {
 	background-size: 340px 209px;
