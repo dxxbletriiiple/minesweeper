@@ -26,6 +26,7 @@ const counterSlice = createSlice({
 			state.face = '';
 		},
 		onContextMenu: (state, action: PayloadAction<string>) => {
+			state.isStarted = true;
 			if (state.flagsCount > 0) {
 				state.grid = state.grid = state.grid.map((el) => {
 					if (el.id == action.payload) {

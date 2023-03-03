@@ -25,7 +25,7 @@ export const InfoBlock = (): JSX.Element => {
 
 	return (
 		<div className={styles['info-block']}>
-			<div className={styles.flags} datatype={flagsCount.toString()}>
+			<div className={styles.flags}>
 				<div></div>
 				<div datatype={Math.floor(flagsCount / 10).toString()}></div>
 				<div datatype={(flagsCount % 10).toString()}></div>
