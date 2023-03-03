@@ -54,12 +54,12 @@
 	&.flag {
 		@include bg;
 		@include bomb;
-		background-position: 247px -127px;
+		background-position: -77px -127px;
 	}
 	&.question {
 		@include bg;
 		@include bomb;
-		background-position: 208px -127px;
+		background-position: -116px -127px;
 	}
 	&.bomb {
 		&.checked {

@@ -1,11 +1,11 @@
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './components/Container/Container';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
 import { Grid } from './components/Grid/Grid';
 import { GridElement } from './components/GridElement/GridElement';
 import { IGridElementProps } from './components/GridElement/GridElement.interface';
-import { store, RootState } from './store/store';
-import { onClick } from './store/reducers';
+import { RootState } from './store/store';
+import { onClick, onContextMenu } from './store/reducers';
 import './App.scss';
 
 function App() {
@@ -15,7 +15,10 @@ function App() {
 	const handleClick = (id: string) => {
 		dispatch(onClick(id));
 	};
-	const onContextMenu = (id: string) => {};
+	const handleContextMenu = (e: React.MouseEvent, id: string) => {
+		e.preventDefault();
+		dispatch(onContextMenu(id));
+	};
 
 	return (
 		<div className="App">
@@ -23,7 +26,7 @@ function App() {
 				<InfoBlock />
 				<Grid>
 					{grid.map((el: IGridElementProps) => (
-						<GridElement {...el} key={el.id} onClick={handleClick} />
+						<GridElement {...el} key={el.id} onClick={handleClick} onContextMenu={handleContextMenu} />
 					))}
 				</Grid>
 			</Container>
