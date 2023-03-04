@@ -2,7 +2,7 @@
 
 ### Ссылка на деплой
 
-[Vercel](https://someurl.come)
+[Vercel](https://minesweeper-gamma-dusky.vercel.app)
 
 ### Для запуска локально
 
