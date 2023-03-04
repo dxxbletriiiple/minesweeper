@@ -1,5 +1,7 @@
 # Тестовое задание ВК стажировка
 
+#### сделано 9 из 11
+
 ### Ссылка на деплой
 
 [Vercel](https://minesweeper-gamma-dusky.vercel.app)
