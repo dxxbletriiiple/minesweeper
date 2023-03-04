@@ -5,10 +5,10 @@
 	outline: 1px solid #7b7b7b;
 	@include bg;
 	@include bomb;
-	background-position: 2px -127px;
+	background-position: 1px -127px;
 	&.valid {
 		&.checked {
-			background-position: -40px -127px;
+			background-position: -42px -127px;
 			@include number;
 			&[datatype='1'] {
 				@include one;
@@ -37,16 +37,16 @@
 		}
 	}
 	&.flag {
-		background-position: -77px -127px;
+		background-position: -82px -127px;
 	}
 	&.question {
-		background-position: -116px -127px;
+		background-position: -122px -127px;
 	}
 	&.bomb {
 		&.checked {
 			@include bomb;
 			&.clicked {
-				background-position: -237px -127px;
+				background-position: -247px -127px;
 			}
 		}
 	}

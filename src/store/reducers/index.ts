@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getGrid } from '../../utils';
+import { bombClick, contextClick, getGrid, validClick } from '../../utils';
+import { ClickType, IState } from './reducer.interface';
 
-type ClickType = {
-	id: string;
-	clazz?: string;
-};
-const initialState = {
+const initialState: IState = {
 	grid: getGrid(),
 	isStarted: false,
 	face: '',
@@ -21,29 +18,15 @@ const gridSlice = createSlice({
 			state.face = 'scared';
 		},
 		onClickEnd: (state, action: PayloadAction<ClickType>) => {
-			if (action.payload.clazz == 'bomb') {
+			if (action.payload.clazz == 'bomb' && !state.isOver) {
 				state.isOver = true;
 				state.isStarted = false;
-				state.grid = state.grid.map((el) => {
-					if (!el.flag) {
-						if (el.clazz === 'bomb') {
-							if (action.payload.id === el.id) return { ...el, checked: true, clicked: true };
-							return { ...el, checked: true };
-						}
-						return el;
-					}
-					return el;
-				});
+				state.grid = bombClick(state.grid, action.payload.id);
 			}
 			if (!state.isOver) {
 				state.face = 'scared';
 				state.isStarted = true;
-				state.grid = state.grid.map((el) => {
-					if (el.id == action.payload.id && !el.flag) {
-						return { ...el, checked: true };
-					}
-					return el;
-				});
+				state.grid = validClick(state.grid, action.payload.id);
 				state.face = '';
 			}
 			const over = state.grid.filter((el) => el.checked).length;
@@ -58,16 +41,7 @@ const gridSlice = createSlice({
 				state.face = '';
 				state.isStarted = true;
 				if (state.flagsCount > 0) {
-					state.grid = state.grid = state.grid.map((el) => {
-						if (el.id == action.payload) {
-							if (el.flag == '') {
-								return { ...el, flag: 'flag' };
-							}
-							if (el.flag == 'flag') return { ...el, flag: 'question' };
-							if (el.flag == 'question') return { ...el, flag: '' };
-						}
-						return el;
-					});
+					state.grid = contextClick(state.grid, action.payload);
 					const flags = state.grid.filter((el) => el.flag == 'flag').length;
 					state.flagsCount = 40 - flags;
 				}

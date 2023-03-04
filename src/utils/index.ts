@@ -9,7 +9,7 @@ const shuffledGrid = [
 	...Array(_WIDTH ** 2 - _BOMBSCOUNT).fill({ id: '', clazz: 'valid', count: '', checked: false, flag: '' }),
 ].sort(() => Math.random() - 0.5);
 
-export function getGrid() {
+export function getGrid(): IGridElementProps[] {
 	const grid: IGridElementProps[] = [];
 	for (let i = 0; i < shuffledGrid.length; i++) {
 		let total = 0;
@@ -31,4 +31,37 @@ export function getGrid() {
 		grid.push({ ...shuffledGrid[i] });
 	}
 	return grid;
+}
+
+export function contextClick(grid: IGridElementProps[], id: string): IGridElementProps[] {
+	const newArr = grid.map((el) => {
+		if (el.id == id) {
+			if (el.flag == '') {
+				return { ...el, flag: 'flag' };
+			}
+			if (el.flag == 'flag') return { ...el, flag: 'question' };
+			if (el.flag == 'question') return { ...el, flag: '' };
+		}
+		return el;
+	});
+	return newArr;
+}
+
+export function bombClick(grid: IGridElementProps[], id: string): IGridElementProps[] {
+	const newArr = grid.map((el) => {
+		if (!el.flag) {
+			if (el.clazz === 'bomb') {
+				if (id === el.id) return { ...el, checked: true, clicked: true };
+				return { ...el, checked: true };
+			}
+			return el;
+		}
+		return el;
+	});
+	return newArr;
+}
+
+export function validClick(grid: IGridElementProps[], id: string): IGridElementProps[] {
+	const newArr = grid.map((el) => (el.id == id && !el.flag ? { ...el, checked: true } : el));
+	return newArr;
 }
