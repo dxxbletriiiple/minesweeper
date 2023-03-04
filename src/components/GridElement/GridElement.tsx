@@ -8,7 +8,7 @@ export const GridElement = ({ id, clazz, count, checked, flag }: IGridElementPro
 	const dispatch = useDispatch();
 
 	const handleClick = (id: string) => {
-		dispatch(onClickEnd(id));
+		dispatch(onClickEnd({ id, clazz }));
 	};
 
 	const handleContextMenu = (e: React.MouseEvent, id: string) => {
