@@ -3,7 +3,7 @@ import { getGrid } from '../../utils';
 
 type ClickType = {
 	id: string;
-	clazz: string;
+	clazz?: string;
 };
 const initialState = {
 	grid: getGrid(),
@@ -25,9 +25,12 @@ const counterSlice = createSlice({
 				state.isOver = true;
 				state.isStarted = false;
 				state.grid = state.grid.map((el) => {
-					if (el.clazz === 'bomb') {
-						if (action.payload.id === el.id) return { ...el, checked: true, clicked: true };
-						return { ...el, checked: true };
+					if (!el.flag) {
+						if (el.clazz === 'bomb') {
+							if (action.payload.id === el.id) return { ...el, checked: true, clicked: true };
+							return { ...el, checked: true };
+						}
+						return el;
 					}
 					return el;
 				});
@@ -36,7 +39,7 @@ const counterSlice = createSlice({
 				state.face = 'scared';
 				state.isStarted = true;
 				state.grid = state.grid.map((el) => {
-					if (el.id == action.payload.id && el.flag) {
+					if (el.id == action.payload.id && !el.flag) {
 						return { ...el, checked: true };
 					}
 					return el;
