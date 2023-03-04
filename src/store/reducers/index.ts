@@ -13,7 +13,7 @@ const initialState = {
 	isOver: false,
 };
 
-const counterSlice = createSlice({
+const gridSlice = createSlice({
 	name: 'grid',
 	initialState,
 	reducers: {
@@ -83,5 +83,5 @@ const counterSlice = createSlice({
 	},
 });
 
-export const { onClickStart, onClickEnd, onContextMenu, onRestart } = counterSlice.actions;
-export default counterSlice.reducer;
+export const { onClickStart, onClickEnd, onContextMenu, onRestart } = gridSlice.actions;
+export default gridSlice.reducer;
