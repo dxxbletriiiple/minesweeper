@@ -5,7 +5,7 @@ const _WIDTH = 16;
 const _BOMBSCOUNT = 40;
 
 const shuffledGrid = [
-	...Array(_BOMBSCOUNT).fill({ id: '', clazz: 'bomb', count: '', checked: false, flag: '' }),
+	...Array(_BOMBSCOUNT).fill({ id: '', clazz: 'bomb', count: '', checked: false, flag: '', clicked: false }),
 	...Array(_WIDTH ** 2 - _BOMBSCOUNT).fill({ id: '', clazz: 'valid', count: '', checked: false, flag: '' }),
 ].sort(() => Math.random() - 0.5);
 

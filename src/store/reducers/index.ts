@@ -26,10 +26,12 @@ const counterSlice = createSlice({
 				state.isOver = true;
 				state.isStarted = false;
 				state.grid = state.grid.map((el) => {
-					if (el.clazz === 'bomb') return { ...el, checked: true };
+					if (el.clazz === 'bomb') {
+						if (action.payload.id === el.id) return { ...el, checked: true, clicked: true };
+						return { ...el, checked: true };
+					}
 					return el;
 				});
-				return;
 			}
 			if (!state.isOver) {
 				state.face = 'scared';
@@ -43,6 +45,7 @@ const counterSlice = createSlice({
 		},
 		onContextMenu: (state, action: PayloadAction<string>) => {
 			if (!state.isOver) {
+				state.face = '';
 				state.isStarted = true;
 				if (state.flagsCount > 0) {
 					state.grid = state.grid = state.grid.map((el) => {

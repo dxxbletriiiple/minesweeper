@@ -9,62 +9,45 @@
 	&.valid {
 		&.checked {
 			background-position: -40px -127px;
+			@include number;
 			&[datatype='1'] {
-				@include bg;
-				@include number;
 				@include one;
 			}
 			&[datatype='2'] {
-				@include bg;
-				@include number;
 				@include two;
 			}
 			&[datatype='3'] {
-				@include bg;
-				@include number;
 				@include three;
 			}
 			&[datatype='4'] {
-				@include bg;
-				@include number;
 				@include four;
 			}
 			&[datatype='5'] {
-				@include bg;
-				@include number;
 				@include five;
 			}
 			&[datatype='6'] {
-				@include bg;
-				@include number;
 				@include six;
 			}
 			&[datatype='7'] {
-				@include bg;
-				@include number;
 				@include seven;
 			}
 			&[datatype='8'] {
-				@include bg;
-				@include number;
 				@include eight;
 			}
 		}
 	}
 	&.flag {
-		@include bg;
-		@include bomb;
 		background-position: -77px -127px;
 	}
 	&.question {
-		@include bg;
-		@include bomb;
 		background-position: -116px -127px;
 	}
 	&.bomb {
 		&.checked {
-			@include bg;
 			@include bomb;
+			&.clicked {
+				background-position: -237px -127px;
+			}
 		}
 	}
 }
