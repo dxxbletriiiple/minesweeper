@@ -17,7 +17,6 @@ const counterSlice = createSlice({
 	name: 'grid',
 	initialState,
 	reducers: {
-		// ! TODO need to fix on context menu
 		onClickStart: (state) => {
 			state.face = 'scared';
 		},
@@ -37,10 +36,18 @@ const counterSlice = createSlice({
 				state.face = 'scared';
 				state.isStarted = true;
 				state.grid = state.grid.map((el) => {
-					if (el.id == action.payload.id) return { ...el, checked: true };
+					if (el.id == action.payload.id && el.flag) {
+						return { ...el, checked: true };
+					}
 					return el;
 				});
 				state.face = '';
+			}
+			const over = state.grid.filter((el) => el.checked).length;
+			if (over == 216) {
+				state.isOver = true;
+				state.face = 'win';
+				state.isStarted = false;
 			}
 		},
 		onContextMenu: (state, action: PayloadAction<string>) => {
