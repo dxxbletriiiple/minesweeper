@@ -52,7 +52,7 @@ const gridSlice = createSlice({
 			state.flagsCount = 40;
 			state.isStarted = false;
 			state.isOver = false;
-			location.reload();
+			state.grid = getGrid();
 		},
 	},
 });

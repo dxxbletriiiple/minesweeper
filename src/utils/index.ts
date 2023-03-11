@@ -4,12 +4,11 @@ import { v4 } from 'uuid';
 const _WIDTH = 16;
 const _BOMBSCOUNT = 40;
 
-const shuffledGrid = [
-	...Array(_BOMBSCOUNT).fill({ id: '', clazz: 'bomb', count: '', checked: false, flag: '', clicked: false }),
-	...Array(_WIDTH ** 2 - _BOMBSCOUNT).fill({ id: '', clazz: 'valid', count: '', checked: false, flag: '' }),
-].sort(() => Math.random() - 0.5);
-
 export function getGrid(): IGridElementProps[] {
+	const shuffledGrid = [
+		...Array(_BOMBSCOUNT).fill({ id: '', clazz: 'bomb', count: '', checked: false, flag: '', clicked: false }),
+		...Array(_WIDTH ** 2 - _BOMBSCOUNT).fill({ id: '', clazz: 'valid', count: '', checked: false, flag: '' }),
+	].sort(() => Math.random() - 0.5);
 	const grid: IGridElementProps[] = [];
 	for (let i = 0; i < shuffledGrid.length; i++) {
 		let total = 0;
